@@ -1,8 +1,8 @@
 CREATE TABLE "users" (
   "id" bigserial PRIMARY KEY,
-  "wallet_address" varchar(255),
-  "name" varchar(255),
-  "avatar_url" varchar(1000),
+  "wallet_address" varchar(255) NOT NULL,
+  "name" varchar(255) NOT NULL,
+  "avatar_url" varchar(1000) NOT NULL,
   "created_at" timestamp DEFAULT (now()),
   "updated_at" timestamp
 );
@@ -10,10 +10,10 @@ CREATE TABLE "users" (
 CREATE TABLE "event" (
   "id" bigserial PRIMARY KEY,
   "author_id" bigint,
-  "name" varchar(1000),
+  "name" varchar(1000) NOT NULL,
   "date" timestamp,
-  "location" varchar(1000),
-  "description" varchar(1000),
+  "location" varchar(1000) NOT NULL,
+  "description" varchar(1000) NOT NULL,
   "created_at" timestamp DEFAULT (now()),
   "updated_at" timestamp
 );
@@ -21,7 +21,7 @@ CREATE TABLE "event" (
 CREATE TABLE "ticket" (
   "id" bigserial PRIMARY KEY,
   "event_id" bigint,
-  "name" varchar,
+  "name" varchar NOT NULL,
   "amount" int,
   "price" int,
   "status" int,

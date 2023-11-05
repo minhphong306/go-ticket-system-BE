@@ -11,10 +11,10 @@ import (
 type Event struct {
 	ID          int64
 	AuthorID    sql.NullInt64
-	Name        sql.NullString
+	Name        string
 	Date        sql.NullTime
-	Location    sql.NullString
-	Description sql.NullString
+	Location    string
+	Description string
 	CreatedAt   sql.NullTime
 	UpdatedAt   sql.NullTime
 }
@@ -38,7 +38,7 @@ type OrderDetail struct {
 type Ticket struct {
 	ID        int64
 	EventID   sql.NullInt64
-	Name      sql.NullString
+	Name      string
 	Amount    sql.NullInt32
 	Price     sql.NullInt32
 	Status    sql.NullInt32
@@ -48,9 +48,9 @@ type Ticket struct {
 
 type User struct {
 	ID            int64
-	WalletAddress sql.NullString
-	Name          sql.NullString
-	AvatarUrl     sql.NullString
+	WalletAddress string
+	Name          string
+	AvatarUrl     string
 	CreatedAt     sql.NullTime
 	UpdatedAt     sql.NullTime
 }

@@ -23,9 +23,9 @@ INSERT INTO users (
 `
 
 type CreateUserParams struct {
-	WalletAddress sql.NullString
-	Name          sql.NullString
-	AvatarUrl     sql.NullString
+	WalletAddress string
+	Name          string
+	AvatarUrl     string
 }
 
 func (q *Queries) CreateUser(ctx context.Context, arg CreateUserParams) (sql.Result, error) {

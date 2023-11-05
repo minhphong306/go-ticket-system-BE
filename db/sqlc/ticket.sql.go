@@ -18,7 +18,7 @@ RETURNING id, event_id, name, amount, price, status, created_at, updated_at
 
 type CreateTicketParams struct {
 	EventID   sql.NullInt64
-	Name      sql.NullString
+	Name      string
 	Amount    sql.NullInt32
 	Price     sql.NullInt32
 	Status    sql.NullInt32
@@ -124,7 +124,7 @@ WHERE id = $1
 type UpdateTicketParams struct {
 	ID        int64
 	EventID   sql.NullInt64
-	Name      sql.NullString
+	Name      string
 	Amount    sql.NullInt32
 	Price     sql.NullInt32
 	Status    sql.NullInt32

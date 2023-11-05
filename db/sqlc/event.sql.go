@@ -18,10 +18,10 @@ RETURNING id, author_id, name, date, location, description, created_at, updated_
 
 type CreateEventParams struct {
 	AuthorID    sql.NullInt64
-	Name        sql.NullString
+	Name        string
 	Date        sql.NullTime
-	Location    sql.NullString
-	Description sql.NullString
+	Location    string
+	Description string
 	CreatedAt   sql.NullTime
 	UpdatedAt   sql.NullTime
 }
@@ -88,10 +88,10 @@ WHERE id = $1
 type UpdateEventParams struct {
 	ID          int64
 	AuthorID    sql.NullInt64
-	Name        sql.NullString
+	Name        string
 	Date        sql.NullTime
-	Location    sql.NullString
-	Description sql.NullString
+	Location    string
+	Description string
 	UpdatedAt   sql.NullTime
 }
 
