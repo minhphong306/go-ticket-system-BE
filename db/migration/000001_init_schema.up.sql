@@ -54,3 +54,71 @@ ALTER TABLE "ticket" ADD FOREIGN KEY ("event_id") REFERENCES "event" ("id");
 ALTER TABLE "order_detail" ADD FOREIGN KEY ("order_id") REFERENCES "orders" ("id");
 
 ALTER TABLE "order_detail" ADD FOREIGN KEY ("ticket_id") REFERENCES "ticket" ("id");
+
+-- FILEPATH: /Users/apple/go/src/simple-bank-2/db/migration/000001_init_schema.up.sql
+-- BEGIN: ed8c6549bwf9
+CREATE OR REPLACE FUNCTION update_users_updated_at()
+RETURNS TRIGGER AS $$
+BEGIN
+  NEW.updated_at = NOW();
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER update_users_updated_at
+AFTER UPDATE ON users
+FOR EACH ROW
+EXECUTE FUNCTION update_users_updated_at();
+
+CREATE OR REPLACE FUNCTION update_event_updated_at()
+RETURNS TRIGGER AS $$
+BEGIN
+  NEW.updated_at = NOW();
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER update_event_updated_at
+AFTER UPDATE ON event
+FOR EACH ROW
+EXECUTE FUNCTION update_event_updated_at();
+
+CREATE OR REPLACE FUNCTION update_ticket_updated_at()
+RETURNS TRIGGER AS $$
+BEGIN
+  NEW.updated_at = NOW();
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER update_ticket_updated_at
+AFTER UPDATE ON ticket
+FOR EACH ROW
+EXECUTE FUNCTION update_ticket_updated_at();
+
+CREATE OR REPLACE FUNCTION update_order_detail_updated_at()
+RETURNS TRIGGER AS $$
+BEGIN
+  NEW.updated_at = NOW();
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER update_order_detail_updated_at
+AFTER UPDATE ON order_detail
+FOR EACH ROW
+EXECUTE FUNCTION update_order_detail_updated_at();
+
+CREATE OR REPLACE FUNCTION update_orders_updated_at()
+RETURNS TRIGGER AS $$
+BEGIN
+  NEW.updated_at = NOW();
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER update_orders_updated_at
+AFTER UPDATE ON orders
+FOR EACH ROW
+EXECUTE FUNCTION update_orders_updated_at();
+-- END: ed8c6549bwf9

@@ -12,4 +12,11 @@ migrateup:
 migratedown:
 	migrate -path db/migration -database "postgresql://root:secret@localhost:5432/ticketnft?sslmode=disable" -verbose down
 
-.PHONY: postgres createdb dropdb
+migrateforce:
+	migrate -path db/migration -database "postgresql://root:secret@localhost:5432/ticketnft?sslmode=disable" force 1
+
+
+sqlc:
+	sqlc generate
+
+.PHONY: postgres createdb dropdb mgirateup migratedown sqlc
