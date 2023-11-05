@@ -1,0 +1,57 @@
+// Use DBML to define your database structure
+// Docs: https://dbml.dbdiagram.io/docs
+
+
+
+Table users {
+  id integer [primary key]
+  wallet_address varchar(255)
+  name varchar(255)
+  avatar_url varchar(1000)
+  created_at timestamp [default: `now()`]
+  updated_at timestamp
+}
+
+Table event {
+  id integer [primary key]
+  author_id integer
+  name string
+  date timestamp
+  location string
+  description string
+  created_at timestamp [default: `now()`]
+  updated_at timestamp
+}
+
+Table ticket {
+  id integer [primary key]
+  event_id integer
+  name varchar
+  amount string
+  price integer
+  status tinyint
+  created_at timestamp [default: `now()`]
+  updated_at timestamp
+  }
+
+Table orders {
+  id number [primary key]
+  customer_id number
+  total number 
+}
+
+Table order_detail {
+  id number [primary key]
+  order_id number
+  ticket_id number
+  price number
+  qty number
+  created_at timestamp [default: `now()`]
+  updated_at timestamp
+  }
+
+Ref: event.author_id > users.id // many-to-one
+Ref: event.id < ticket.event_id
+Ref: orders.customer_id < users.id
+Ref: order_detail.ticket_id < ticket.id
+Ref: order_detail.order_id - orders.id
