@@ -10,3 +10,6 @@ SELECT * FROM event WHERE id = $1;
 UPDATE event
 SET author_id = $2, name = $3, date = $4, location = $5, description = $6, updated_at = $7
 WHERE id = $1;
+
+-- name: DeleteEvent :exec
+DELETE FROM event WHERE id = $1;
