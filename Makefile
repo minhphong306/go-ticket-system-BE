@@ -15,8 +15,10 @@ migratedown:
 migrateforce:
 	migrate -path db/migration -database "postgresql://root:secret@localhost:5432/ticketnft?sslmode=disable" force 1
 
+test:
+	go test -v -cover ./...
 
 sqlc:
 	sqlc generate
 
-.PHONY: postgres createdb dropdb mgirateup migratedown sqlc
+.PHONY: postgres createdb dropdb mgirateup migratedown sqlc test migrateforce	

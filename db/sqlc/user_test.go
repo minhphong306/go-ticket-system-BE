@@ -4,13 +4,14 @@ import (
 	"context"
 	"testing"
 
+	"github.com/minhphong306/go-ticket-system-BE/util"
 	"github.com/stretchr/testify/require"
 )
 
 func TestCreateUser(t *testing.T) {
 	arg := CreateUserParams{
 		WalletAddress: "test123",
-		Name:          "Minh Phong",
+		Name:          util.RandomName(),
 		AvatarUrl:     "https://google.com",
 	}
 
